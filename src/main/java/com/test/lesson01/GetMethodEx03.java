@@ -1,3 +1,4 @@
+
 package com.test.lesson01;
 
 import java.io.IOException;
@@ -13,6 +14,8 @@ public class GetMethodEx03 extends HttpServlet{
 	@Override
 	public void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
+		
+		// 테스트용 주석 추가
 		
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/json");
