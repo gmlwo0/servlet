@@ -16,7 +16,7 @@ public class GetMethodEx03 extends HttpServlet{
 			HttpServletResponse response) throws IOException {
 		
 		// 테스트용 주석 추가
-		
+		// stash용 주석 추가
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/json");
 		
