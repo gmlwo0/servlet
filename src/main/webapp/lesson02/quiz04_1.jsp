@@ -11,27 +11,36 @@
 </head>
 <body>
 	<%
-		int cm = Integer.valueOf(request.getParameter("cm"));
-		String[] lengthArr =  request.getParameterValues("length");
-		
-		double inchi = (double) cm / 2.54;
-		double yard = (double) cm / 91.44;
-		double feet = (double) cm / 30.48;
-		double m = (double) cm / 100;
+		int length = Integer.valueOf(request.getParameter("length"));
+		String[] types =  request.getParameterValues("type");
+
 			
-			String result = "";
-		if (lengthArr != null) {
-			for(String length : lengthArr){
-				result += "";
-				
-			}
-		}
 	%>
 	
 	<div class="container">
 		<h1>길이 변환 결과</h1>
-		<h4><%= cm %></h4><br>
-		<h3><%= result %></h3>
+		<h3><%= length %>cm</h3><br><hr>
+		<h2>
+		 	<%
+	 	if (types!= null) {
+			for(String type : types){ // [in, m, ft]
+					if (type.equals("inchi")) { // inchi
+						double inchi =  length * 0.393701;
+						out.print(inchi +"in<br>"); // cm to inchi
+					} else if(type.equals("yard")){ // yard
+						double yard = length * 0.010936;
+						out.print(yard + "yd<br>"); // cm to yard
+					} else if (type.equals("feet")) {// feet
+						double feet =  length * 0.032808;
+						out.print(feet +"ft<br>"); // cm to feet
+					} else if (type.equals("meter")) { // meter
+						double meter = length / 100.0;
+						out.print(meter + "m<br>"); // cm to meter
+					}
+			}
+		}	 		
+		 	%>
+		</h2><br>
 	</div>
 </body>
 </html>
