@@ -10,6 +10,12 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </head>
+	<style>
+		header {height:100px;}
+		nav {height:50px;}
+		.contents {min-height:500px;}
+		footer{height:80px;}	
+	</style>
 	<%
 	// 아티스트 정보 
 
@@ -118,12 +124,6 @@
 		}
 	%>
 	
-	<style>
-		header {height:100px;}
-		nav {height:50px;}
-		.contents {min-height:500px;}
-		footer{height:80px;}	
-	</style>
 <body>
 	<div id="wrap" class="container">
 		<header class=" d-flex align-items-center">
@@ -133,13 +133,15 @@
 			</div>
 			<!-- 검색 -->
 			<div class="col-10">
-				<div class="input-group">
-					  <input type="text" class="form-control col-6">
-					  <div class="input-group-append">
-					    <button class="btn btn-info" type="button">검색</button>
-					  </div>
+				<form method="get" action="/lesson02/quiz10_info.jsp">
+					<div class="input-group">
+						  <input type="text" class="form-control col-6" name="search">
+						  <div class="input-group-append">
+						    <button class="btn btn-info" type="submit">검색</button>
+						  </div>
+					</div>
+				</form>
 				</div>
-			</div>
 		</header> 
 		<nav class=" d-flex align-items-center ">
 			<ul class="nav nav-fill">

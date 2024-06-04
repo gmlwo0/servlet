@@ -115,8 +115,8 @@
 						    <button class="btn btn-info" type="submit">검색</button>
 						  </div>
 					</div>
-				</div>
-			</form>		
+				</form>		
+			</div>
 		</header> 
 		<nav class=" d-flex align-items-center">
 			<ul class="nav nav-fill ">
