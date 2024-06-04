@@ -13,7 +13,7 @@
 <body>
 
 	<%
-		  List<Map<String, Object>> list = new ArrayList<>();
+	  List<Map<String, Object>> list = new ArrayList<>();
 	  Map<String, Object> map = new HashMap<String, Object>() {
 	      { 
 	          put("id", 1000);
@@ -61,7 +61,7 @@
 		
 	
 	<div class="container">
-		<h1 class="text-center">첵 목록</h1>
+		<h1 class="text-center">책 목록</h1>
 		<table class="table text-center">
 			<thead>
 				<tr>
