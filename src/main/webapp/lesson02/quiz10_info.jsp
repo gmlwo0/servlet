@@ -90,14 +90,39 @@
     musicList.add(musicInfo);
 	%> 
 
+
+	<%
+		// 보여줄 맵 저장
+		Map<String,Object> target = null;
+	
+		// 1. id(a 태그)
+		if (request.getParameter("id") != null) {
+			int id = Integer.valueOf(request.getParameter("id"));			
+			for (Map<String,Object> item : musicList) {
+				if (id == (int)item.get("id") ) {
+					target = item;
+					break;
+				}
+			}
+		}
+		
+		// 2. search(form)
+		if (request.getParameter("search") != null){
+			String search = request.getParameter("search");
+			for (Map<String,Object> item : musicList) {
+				if (search.equals(item.get("title"))) {
+					target = item;
+					break;
+				}
+			}
+		}
+	%>
+	
 	<style>
 		header {height:100px;}
 		nav {height:50px;}
 		.contents {min-height:500px;}
-		footer{height:80px;}
-		
-		
-		
+		footer{height:80px;}	
 	</style>
 <body>
 	<div id="wrap" class="container">
@@ -116,8 +141,8 @@
 				</div>
 			</div>
 		</header> 
-		<nav class=" d-flex align-items-center">
-			<ul class="nav nav-fill ">
+		<nav class=" d-flex align-items-center ">
+			<ul class="nav nav-fill">
 				<li class="nav-item"><a href="#" class="nav-link">멜롱챠트</a></li>
 				<li class="nav-item"><a href="#" class="nav-link">최신음악</a></li>
 				<li class="nav-item"><a href="#" class="nav-link">장르음악</a></li>
@@ -126,44 +151,52 @@
 			</ul>
 		</nav>
 		<section class="contents">
-			<!-- 아티스트 정보 영역 -->
+		
+		<%
+			if (target != null ) {
+		%>
+
+			<!-- 곡 정보  -->
+			<h4>곡 정보</h4>
 			<div class="d-flex border border-success p-3">
 				<div class="mr-4">
-					<img src=<%=artistInfo.get("photo")%> alt="가수 이미지" width="150">
+					<img src=<%=target.get("thumbnail") %> alt="가수 이미지" width="150">
 				</div>
-				<div>
-					<h3 class="font-weight-bold"><%=artistInfo.get("name") %></h3>
-					<div><%=artistInfo.get("agency") %></div>
-					<div><%=artistInfo.get("debute") %> 데뷔</div>
+					<div >
+						<h4><%=target.get("title") %></h4>
+						<div class="text-success"><%=target.get("singer") %></div>
+						<div class="d-flex text-secondary">
+						<div >
+							<div>앨범</div>
+							<div>재생시간</div>
+							<div>작곡가</div>
+							<div>작사가</div>
+						</div>	
+						<div class="ml-4">
+							<div> <%=target.get("album") %></div>
+							<div> <%=(int)target.get("time") / 60 %>:<%= (int)target.get("time") % 60 %> </div>
+							<div> <%=target.get("composer") %></div>
+							<div> <%=target.get("lyricist") %></div>
+						</div>	
 				</div>
+				</div>
+				</div>
+			<!--  가사 -->
+			<div>
+				<h4>가사</h4>
+				<hr>
+				<p>가사 정보 없음</p>
 			</div>
-			<!--  곡 목록 -->
-			<h4>곡 목록</h4>
-			<table class="table text-center">
-				<thead>
-					<tr>
-						<th>no</th>
-						<th>제목</th>
-						<th>앨범</th>
-				</thead>
-				<tboby>
-				<%
-
-					for (Map<String,Object> item : musicList) {
-				%>
-					<tr>
-						<td><%=item.get("id") %></td>
-						<td><a href="/lesson02/quiz10_1.jsp?id=<%=item.get("id") %>"><%=item.get("title") %></a></td>
-						<td><%=item.get("album") %></td>
-					</tr>
-				<%
-					}
-				%>	
-				</tboby>
-			</table>
+		<%
+			} else {
+		
+		%>
+		검색된 결과 없음
+		<%		
+			}
+		%>		
 		</section>
-		<hr>
-		<footer class="d-flex align-items-center">
+		<footer class="d-flex justify-content-center align-items-center">
 			<small>Copyright2021 melong All Rights Reserved</small>
 		</footer>
 	</div>
