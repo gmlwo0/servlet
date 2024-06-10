@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.test.common.MysqlService;
 
-@WebServlet("/lesson03/quiz03_insert")
-public class lesson03Quiz03Servlet extends HttpServlet{
+@WebServlet("/lesson03/quiz02_insert")
+public class lesson03Quiz02InsertServlet extends HttpServlet{
 	
 	@Override
 	public void doPost (HttpServletRequest request,
@@ -21,18 +21,16 @@ public class lesson03Quiz03Servlet extends HttpServlet{
 		
 		// request params
 		String name = request.getParameter("name");
-		String yyyymmdd = request.getParameter("yyyymmdd");
-		String email = request.getParameter("email");
-		String introduce = request.getParameter("introduce");
+		String url = request.getParameter("url");
 		
 		// db 연결
 		MysqlService ms = MysqlService.getInstance();
 		ms.connect();
 		// insert 쿼리 수행
 		String insertQuery = "insert into `new_user`"
-				+ "(`name`,`yyyymmdd`,`introduce`,`email`)"
+				+ "(`name`,`yyyymmdd`)"
 				+ "values"
-				+ "('"+ name + "','" +yyyymmdd +"','" +introduce + "',' " + email +"')";
+				+ "('"+ name + "','" +url +"'')";
 		
 		try {
 			ms.update(insertQuery);
@@ -44,6 +42,6 @@ public class lesson03Quiz03Servlet extends HttpServlet{
 		ms.disconnect();
 		
 		// 목록 화면 이동 Redirect 
-		response.sendRedirect("/lesson03/quiz03.jsp");
+		response.sendRedirect("/lesson03/quiz02.jsp");
 	}
 }

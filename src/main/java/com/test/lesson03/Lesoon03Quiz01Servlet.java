@@ -37,7 +37,7 @@ public class Lesoon03Quiz01Servlet extends HttpServlet{
 		}
 			
 		// select query - db => 출력
-		String selectQuery = "select `address`,`area`,`type` `real_estate`"
+		String selectQuery = "select `address`,`area `,`type` `real_estate`"
 				+ "order by `id` DESC "
 				+ "limit 10";
 		PrintWriter out = response.getWriter();
