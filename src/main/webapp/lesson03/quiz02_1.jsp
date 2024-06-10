@@ -12,7 +12,14 @@
 <body>
 	<div class="container">
 		<h1>즐겨찾기 추가</h1>
-		<form method="post" action=""></form>
+		<form method="post" action="/lesson03/quiz02_1.jsp"></form>
+			<label for="name" class="w-25">사이트명: <input type="text" class="form-control" name="name" id="name"></label><br>
+			<label for="url" class="w-50">사이트 주소: <input type="text" class="form-control" name="url" id="url"></label>
+			
+			<div class="mt-3">
+				<input type="submit" class="btn btn-success" value="추가">
+			</div>
+		</form>
 	</div>
 </body>
 </html>

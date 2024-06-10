@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.test.common.MysqlService;
 
-@WebServlet("lesson03/ex02_delete")
+@WebServlet("/lesson03/ex02_delete")
 public class DeleteEx02 extends HttpServlet{
 
 	@Override

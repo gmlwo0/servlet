@@ -20,36 +20,37 @@
 	ms.connect();
 	
 	// select 쿼리 수행
-	String query = "select * from bookmark ";
-	ResultSet res = ms.select(query);
+	String selectQuery = "select * from `bookmark` order by id desc";
+	ResultSet result = ms.select(selectQuery);
 %>
-
-	<table class="table">
-		<thead>
-			<tr>
-				<th>사이트<th>
-				<th>사이트 주소<th>
-				<th>삭제<th>
-			</tr>
-		</thead>
-		<tbody>
-		<%
-			while (result.next()) {
-		%>
-			<tr>
-				<td><%= result.getString("name") %></td>
-				<td><a href="<%= result.getString("url") %>"></a></td>
-				<td><a href="/lesson03/quiz02_delete>id=<%= result.getInt("id")%>" class="btn btn-danger">삭제</a></td>
-			</tr>
-		<%
-			}
-		%>
-		</tbody>
-		
-		<%
-			// db연결 해제
-			ms.disconnect();
-		%>
-	</table>
+<div class="container">
+		<h1 class="text-center">즐겨찾기 목록</h1>
+		<table class="table text-center">
+			<thead>
+				<tr>
+					<th>사이트명</th>
+					<th>사이트 주소</th>
+					<th>삭제</th>
+				</tr>
+			</thead>
+			<tbody>
+			<%
+				while (result.next()) {
+			%>
+				<tr>
+					<td><%= result.getString("name") %></td>
+					<td><a href="<%= result.getString("url") %>"><%= result.getString("url") %></a></td>
+					<td><a href="/lesson03/quiz02_delete?id=<%= result.getInt("id") %>" class="btn btn-danger">삭제</a></td>
+				</tr>
+			<%
+				}
+			%>
+			</tbody>
+		</table>
+	</div>
+<%
+	//db 연결 해제
+	ms.disconnect();
+%>
 </body>
 </html>

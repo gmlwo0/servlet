@@ -27,10 +27,8 @@ public class lesson03Quiz02InsertServlet extends HttpServlet{
 		MysqlService ms = MysqlService.getInstance();
 		ms.connect();
 		// insert 쿼리 수행
-		String insertQuery = "insert into `new_user`"
-				+ "(`name`,`yyyymmdd`)"
-				+ "values"
-				+ "('"+ name + "','" +url +"'')";
+		String insertQuery = "insert into `bookmark`(`name`, `url`, `createdAt`, `updatedAt`)" + "values ('" + name
+				+ "', '" + url + "', now(), now());";
 		
 		try {
 			ms.update(insertQuery);
